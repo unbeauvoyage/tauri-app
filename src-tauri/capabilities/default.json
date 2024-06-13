@@ -50,6 +50,8 @@
     "clipboard-manager:default",
     "clipboard-manager:allow-read-text",
     "clipboard-manager:allow-write-text",
-    "clipboard-manager:allow-clear"
+    "clipboard-manager:allow-clear",
+    "dialog:default",
+    "dialog:allow-message"
   ]
 }

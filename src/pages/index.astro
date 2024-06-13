@@ -11,7 +11,7 @@ const listOfLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L
 <Layout title="Welcome to Astro.">
 	<main>
 		<ul role="list" class="link-card-grid">
-			<CardList client:idle />
+			<CardList client:only="react" />
 		</ul>
 	</main>
 </Layout>

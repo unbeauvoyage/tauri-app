@@ -1,6 +1,7 @@
 import {useStore} from "@nanostores/react";
 import {htmlContents} from "../HtmlContentStore.ts";
 import {readText, clear, writeText} from '@tauri-apps/plugin-clipboard-manager';
+import { message } from '@tauri-apps/plugin-dialog';
 import {fetch} from "@tauri-apps/plugin-http"
 import ReactCard from "./ReactCard.tsx";
 import {useState} from "react";
@@ -48,8 +49,10 @@ export default function CardList() {
         try {
             await clear()
             setClipboardContent("")
+            // await message('Clipboard cleared', { title: 'Tauri', kind: 'info' })
         } catch (e) {
             console.log('error', e)
+            await message('Clipboard is empty', { title: 'Tauri', kind: 'error' })
         }
     }
 
