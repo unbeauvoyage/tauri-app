@@ -3,7 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "predev": "node get-internal-ip.js",
     "dev": "astro dev",
+    "prebuild": "node get-internal-ip.js",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",

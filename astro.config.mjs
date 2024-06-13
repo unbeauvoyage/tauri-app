@@ -8,8 +8,10 @@ const isProd = import.meta.env.PROD
 let internalHost = null;
 
 if (!isProd) {
-    const {internalIpV4} = await import('internal-ip');
-    internalHost = await internalIpV4();
+    // const {internalIpV4} = await import('internal-ip');
+    // internalHost = await internalIpV4();
+
+    internalHost = process.env.INTERNAL_HOST;
     console.log(`Internal IP: ${internalHost}`);
 }
 
