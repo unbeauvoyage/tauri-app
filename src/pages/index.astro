@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import ReactCard from '../components/ReactCard';
+import CardList from '../components/CardList';
+
 
 const listOfLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 ---
@@ -9,17 +11,7 @@ const listOfLetters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L
 <Layout title="Welcome to Astro.">
 	<main>
 		<ul role="list" class="link-card-grid">
-			{
-				listOfLetters.map(letter => (
-					<!--<Card-->
-					<!--	href={`https://astro.build/docs/${letter.toLowerCase()}`}-->
-					<!--	title={`Astro ${letter}`}-->
-					<!--	body={`Learn about Astro ${letter} in the docs.`}-->
-					<!--/>-->
-					<ReactCard client:idle text="aaaaaa"/>
-				))
-			}
-			<!--<ReactCard client:idle/>-->
+			<CardList client:idle />
 		</ul>
 	</main>
 </Layout>
