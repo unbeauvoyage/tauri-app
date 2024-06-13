@@ -25,7 +25,7 @@ export default function ReactCard({text}: ReactCardProps) {
             <button onClick={()=>{setText("new content")}}>click</button>
             <button onClick={fetchJson}>fetchJson</button>
             <h1>{jsonData}</h1>
-            <h1 className="text-6xl">React Card</h1>
+            <h1 className="text-4xl">React Card</h1>
             <p className="text-xl">This is a React card component</p>
             <p>{content}</p>
             <p>{text}</p>
