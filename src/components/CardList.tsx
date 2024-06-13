@@ -1,6 +1,6 @@
 import {useStore} from "@nanostores/react";
 import {htmlContents} from "../HtmlContentStore.ts";
-import { readText } from '@tauri-apps/plugin-clipboard-manager';
+import {readText, clear, writeText} from '@tauri-apps/plugin-clipboard-manager';
 import {fetch} from "@tauri-apps/plugin-http"
 import ReactCard from "./ReactCard.tsx";
 import {useState} from "react";
@@ -43,11 +43,29 @@ export default function CardList() {
         // const data = await response.json()
         // console.log(data)
     }
+
+    const clearClipboard = async () => {
+        try {
+            await clear()
+            setClipboardContent("")
+        } catch (e) {
+            console.log('error', e)
+        }
+    }
+
+    const writeToClipboard = async () => {
+        await writeText("this is the text to write s;flkj ask;fl as;klfj as;klfj s;alkf ;alsf")
+        // await readClipboard()
+    }
     return (
         <>
             <button className={"text-white bg-gray-900 border-2"} onClick={addHtmlContent}>add html content</button>
-            <button className={"text-white bg-gray-900 border-2"} onClick={deleteHtmlContent}>delete html content</button>
-            <button className={"text-white bg-gray-900 border-2"} onClick={readClipboard}> read clipboard </button>
+            <button className={"text-white bg-gray-900 border-2"} onClick={deleteHtmlContent}>delete html content
+            </button>
+            <button className={"text-white bg-gray-900 border-2"} onClick={readClipboard}>read clipboard</button>
+            <button className={"text-white bg-gray-900 border-2"} onClick={writeToClipboard}>write to clipboard
+            </button>
+            <button className={"text-white bg-gray-900 border-2"} onClick={clearClipboard}>clear clipboard</button>
             <p>{clipboardContent}</p>
             {/* <button onClick={fetchJson}>fetch json</button> */}
             <div className="flex flex-col h-screen">
