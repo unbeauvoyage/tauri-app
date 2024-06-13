@@ -35,12 +35,15 @@ export default function CardList() {
 
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen">
-            <button onClick={addHtmlContent}>add html content</button>
-            <button onClick={deleteHtmlContent}>delete html content</button>
-            {
-                $htmlContents.map((content) => <ReactCard content={content}/>)
-            }
-        </div>
+        <>
+            <button className={"text-white bg-gray-900 border-2"} onClick={addHtmlContent}>add html content</button>
+            <button className={"text-white bg-gray-900 border-2"} onClick={deleteHtmlContent}>delete html content</button>
+            <div className="flex flex-col h-screen">
+                {
+                    $htmlContents.map((content) => <ReactCard content={content}/>)
+                }
+            </div>
+        </>
     )
+
 }

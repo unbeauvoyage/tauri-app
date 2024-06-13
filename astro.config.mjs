@@ -1,23 +1,21 @@
 import {defineConfig} from 'astro/config';
-
 import react from "@astrojs/react";
+import tailwind from "@astrojs/tailwind";
 
-const isProd = import.meta.env.PROD
-
-
+const isProd = import.meta.env.PROD;
 let internalHost = null;
-
 if (!isProd) {
-    // const {internalIpV4} = await import('internal-ip');
-    // internalHost = await internalIpV4();
-
-    internalHost = process.env.INTERNAL_HOST;
+    const {
+        internalIpV4
+    } = await import('internal-ip');
+    internalHost = await internalIpV4();
     console.log(`Internal IP: ${internalHost}`);
 }
 
+
 // https://astro.build/config
 export default defineConfig({
-    integrations: [react()],
+    integrations: [react(), tailwind()],
     server: {
         host: internalHost,
         port: 4323
@@ -42,8 +40,8 @@ export default defineConfig({
                 // host: '0.0.0.0',
                 host: internalHost,
                 // Use a specific port for hmr
-                port: 5183,
-            },
-        },
-    },
+                port: 5183
+            }
+        }
+    }
 });
