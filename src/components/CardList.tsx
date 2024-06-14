@@ -1,5 +1,5 @@
 import {useStore} from "@nanostores/react";
-import {htmlContents} from "../HtmlContentStore.ts";
+import {htmlContentsAtom} from "../HtmlContentStore.ts";
 import {readText, clear, writeText} from '@tauri-apps/plugin-clipboard-manager';
 import { message } from '@tauri-apps/plugin-dialog';
 import {fetch} from "@tauri-apps/plugin-http"
@@ -11,8 +11,8 @@ interface ReactCardProps {
 }
 
 export default function CardList() {
-    const $htmlContents = useStore(htmlContents)
-    console.log($htmlContents, "$htmlCOntents")
+    const htmlContents = useStore(htmlContentsAtom)
+    // console.log(htmlContents, "$htmlContents")
 
 
     // const [jsonData, setJsonData] = useState()
@@ -28,18 +28,19 @@ export default function CardList() {
     // }
 
     const addHtmlContent = () => {
-        htmlContents.set([...$htmlContents, {id: 2, title: "the title", content: "this is the content"}])
+        htmlContentsAtom.set([...htmlContents, {id: 2, title: "the title", content: "this is the content"}])
     }
 
     const deleteHtmlContent = () => {
-        htmlContents.set($htmlContents.slice(0, -1))
+        htmlContentsAtom.set(htmlContents.slice(0, -1))
     }
 
     const [clipboardContent, setClipboardContent] = useState<string>('');
     const readClipboard = async () => {
+        console.log('reading clipboard')
         const content = await readText();
         setClipboardContent(content);
-        console.log(content);
+        console.log(`clipboard content after reading clipboard: ${content}`);
         // const response = await fetch('https://jsonplaceholder.typicode.com/posts')
         // const data = await response.json()
         // console.log(data)
@@ -47,12 +48,13 @@ export default function CardList() {
 
     const clearClipboard = async () => {
         try {
+            console.log('clearing clipboard')
             await clear()
             setClipboardContent("")
             // await message('Clipboard cleared', { title: 'Tauri', kind: 'info' })
         } catch (e) {
             console.log('error', e)
-            await message('Clipboard is empty', { title: 'Tauri', kind: 'error' })
+            await message('Clipboard is empty, nothing to clear', { title: 'Tauri', kind: 'error' })
         }
     }
 
@@ -73,7 +75,7 @@ export default function CardList() {
             {/* <button onClick={fetchJson}>fetch json</button> */}
             <div className="flex flex-col h-screen">
                 {
-                    $htmlContents.map((content) => <ReactCard content={content}/>)
+                    htmlContents.map((content) => <ReactCard content={content}/>)
                 }
             </div>
         </>
