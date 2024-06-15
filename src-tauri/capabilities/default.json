@@ -52,6 +52,18 @@
     "clipboard-manager:allow-write-text",
     "clipboard-manager:allow-clear",
     "dialog:default",
-    "dialog:allow-message"
+    "dialog:allow-message",
+    "fs:default",
+    "fs:read-files",
+    "fs:allow-read-dir",
+    {
+      "identifier": "fs:allow-mkdir",
+      "allow": [{ "path": "$HOME/*" }]
+    },
+    {
+      "identifier": "fs:allow-read-text-file",
+      "allow": [{ "path": "$HOME/*" }]
+    }
+
   ]
 }

@@ -16,6 +16,8 @@
     "@nanostores/react": "^0.7.2",
     "@tauri-apps/plugin-dialog": "^2.0.0-beta.5",
     "@tauri-apps/plugin-http": "^2.0.0-beta.5",
+    "tauri-plugin-clipboard-manager": "file:../plugins-workspace/plugins/clipboard-manager",
+    "tauri-plugin-fs": "file:../plugins-workspace/plugins/fs",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "astro": "^4.9.2",
@@ -23,7 +25,6 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.4",
-    "tauri-plugin-clipboard-manager": "file:../plugins-workspace/plugins/clipboard-manager",
     "typescript": "^5.4.5"
   },
   "devDependencies": {

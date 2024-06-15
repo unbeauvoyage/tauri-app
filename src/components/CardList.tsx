@@ -1,6 +1,7 @@
 import {useStore} from "@nanostores/react";
 import {htmlContentsAtom} from "../HtmlContentStore.ts";
 import {readText, clear, writeText, readImage } from 'tauri-plugin-clipboard-manager';
+import {mkdir, BaseDirectory, readDir, readTextFile} from "tauri-plugin-fs";
 import { message } from '@tauri-apps/plugin-dialog';
 import {fetch} from "@tauri-apps/plugin-http"
 import ReactCard from "./ReactCard.tsx";
@@ -62,8 +63,28 @@ export default function CardList() {
         await writeText("this is the text to write s;flkj ask;fl as;klfj as;klfj s;alkf ;alsf")
         // await readClipboard()
     }
+
+    const [dirToMake, setDirToMake] = useState<string>("")
+    const makeDirectory = async () => {
+        const result = await mkdir( `${dirToMake}`, {baseDir: BaseDirectory.Home})
+        // const result = await readDir("")
+        console.log(result)
+    }
+
+    const [text, setText] = useState<string>("")
+    const readTheFile = async () => {
+        const result = await readTextFile("dnm.txt", {baseDir: BaseDirectory.Home})
+        console.log(result)
+        setText(result)
+    }
     return (
         <>
+            <input onChange={(e) => {
+                setDirToMake(e.target.value)
+            }}/>
+            {text && <p>{text}</p>}
+            <button onClick={makeDirectory}>make directory</button>
+            <button onClick={readTheFile}>read the file</button>
             <button className={"text-white bg-gray-900 border-2"} onClick={addHtmlContent}>add html content</button>
             <button className={"text-white bg-gray-900 border-2"} onClick={deleteHtmlContent}>delete html content
             </button>

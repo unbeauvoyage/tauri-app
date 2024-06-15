@@ -17,7 +17,8 @@ if (!isProd) {
 export default defineConfig({
     integrations: [react(), tailwind()],
     server: {
-        host: internalHost,
+        // host: internalHost,
+        host: "localhost",
         port: 4323
     },
     vite: {
