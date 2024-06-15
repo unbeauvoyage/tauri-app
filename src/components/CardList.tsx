@@ -1,6 +1,6 @@
 import {useStore} from "@nanostores/react";
 import {htmlContentsAtom} from "../HtmlContentStore.ts";
-import {readText, clear, writeText} from '@tauri-apps/plugin-clipboard-manager';
+import {readText, clear, writeText, readImage } from 'tauri-plugin-clipboard-manager';
 import { message } from '@tauri-apps/plugin-dialog';
 import {fetch} from "@tauri-apps/plugin-http"
 import ReactCard from "./ReactCard.tsx";

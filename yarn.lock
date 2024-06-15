@@ -967,13 +967,6 @@
     "@tauri-apps/cli-win32-ia32-msvc" "2.0.0-beta.20"
     "@tauri-apps/cli-win32-x64-msvc" "2.0.0-beta.20"
 
-"@tauri-apps/plugin-clipboard-manager@^2.1.0-beta.3":
-  version "2.1.0-beta.3"
-  resolved "https://registry.yarnpkg.com/@tauri-apps/plugin-clipboard-manager/-/plugin-clipboard-manager-2.1.0-beta.3.tgz#358d408450c723611467a8f7d1d37f5fe1a18841"
-  integrity sha512-j48jTdZWeX5BylIGLYbXtg6ynZAcFKDKK6dguHAbG3zviqNE/XMf2vHOPJeFDZsDE5kVOZZS7nKOj7T2WiCpvw==
-  dependencies:
-    "@tauri-apps/api" "2.0.0-beta.13"
-
 "@tauri-apps/plugin-dialog@^2.0.0-beta.5":
   version "2.0.0-beta.5"
   resolved "https://registry.yarnpkg.com/@tauri-apps/plugin-dialog/-/plugin-dialog-2.0.0-beta.5.tgz#1ad9592d554bd5a4b4d41a9f4aa6e01aa33a9f6a"
@@ -3743,6 +3736,11 @@ tailwindcss@^3.4.4:
     postcss-selector-parser "^6.0.11"
     resolve "^1.22.2"
     sucrase "^3.32.0"
+
+"tauri-plugin-clipboard-manager@file:../plugins-workspace/plugins/clipboard-manager":
+  version "2.1.0-beta.3"
+  dependencies:
+    "@tauri-apps/api" "2.0.0-beta.13"
 
 thenify-all@^1.0.0:
   version "1.6.0"
